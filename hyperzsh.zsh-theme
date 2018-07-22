@@ -10,7 +10,7 @@ PROMPT='$(_user_host)%{$fg[cyan]%}%c $(git_prompt_info)%{$reset_color%}$(git_pro
 local _return_status="%{$fg[red]%}%(?..⍉ )%{$reset_color%}"
 
 function _user_host() {
-  if [[ $(who am i) =~ \([-a-zA-Z0-9\.]+\) ]]; then
+  if [[ -n $SSH_CONNECTION ]]; then
     me="%n@%m"
   elif [[ logname != $USER ]]; then
     me="%n"
